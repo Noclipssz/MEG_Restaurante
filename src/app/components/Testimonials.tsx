@@ -42,7 +42,7 @@ export function Testimonials() {
           {testimonials.map((testimonial, index) => (
             <ScrollReveal key={index} delay={index * 0.1}>
             <div
-              className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20 hover:bg-white/15 transition-all duration-300"
+              className="bg-white/10 rounded-2xl p-6 sm:p-8 border border-white/20 hover:bg-white/15 transition-[background-color] duration-300"
             >
               <Quote className="w-10 h-10 text-white/40 mb-4" />
               
@@ -52,7 +52,7 @@ export function Testimonials() {
                 ))}
               </div>
 
-              <p className="text-white/90 text-lg mb-6 leading-relaxed">
+              <p className="text-white/90 text-base sm:text-lg mb-6 leading-relaxed">
                 "{testimonial.text}"
               </p>
 

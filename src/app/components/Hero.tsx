@@ -34,17 +34,17 @@ export function Hero() {
             <img
               src="/images/logo-meg.png"
               alt="MEG Restaurante"
-              className="h-32 md:h-44 w-auto brightness-0 invert"
+              className="h-24 sm:h-32 md:h-44 w-auto brightness-0 invert"
             />
           </div>
 
           {/* Tagline */}
-          <p className="text-4xl md:text-5xl text-white font-serif mb-6">
+          <p className="text-3xl sm:text-4xl md:text-5xl text-white font-serif mb-6">
             Comida honesta.<br />
             Atendimento de verdade.
           </p>
 
-          <p className="text-xl md:text-2xl text-white/80 mb-8 max-w-xl">
+          <p className="text-lg sm:text-xl md:text-2xl text-white/80 mb-8 max-w-xl">
             Simples, bem feito e com respeito. O lugar onde você sempre sai satisfeito.
           </p>
 
@@ -69,18 +69,18 @@ export function Hero() {
           </div>
 
           {/* Info Cards */}
-          <div className="grid sm:grid-cols-3 gap-4">
-            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
+          <div className="grid grid-cols-3 gap-2 sm:gap-4">
+            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3 sm:p-4 border border-white/20">
               <Clock className="w-5 h-5 text-[#E8611A] mb-2" />
               <p className="text-white/60 text-xs mb-1">Horário</p>
               <p className="text-white font-medium text-sm">Seg-Sáb: 11:15-14h</p>
             </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
+            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3 sm:p-4 border border-white/20">
               <MapPin className="w-5 h-5 text-[#E8611A] mb-2" />
               <p className="text-white/60 text-xs mb-1">Localização</p>
               <p className="text-white font-medium text-sm">Fazendinha, Curitiba</p>
             </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
+            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3 sm:p-4 border border-white/20">
               <Truck className="w-5 h-5 text-[#E8611A] mb-2" />
               <p className="text-white/60 text-xs mb-1">Entrega</p>
               <p className="text-white font-medium text-sm">Grátis até 2km</p>

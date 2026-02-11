@@ -89,7 +89,7 @@ export function Menu() {
               key={menu.day}
               onClick={() => setActiveDay(index)}
               className={`
-                flex-shrink-0 px-6 py-3 rounded-lg font-medium transition-all duration-200
+                flex-shrink-0 px-4 sm:px-6 py-3 rounded-lg font-medium text-sm sm:text-base transition-all duration-200
                 ${activeDay === index 
                   ? 'bg-[#E8611A] text-white shadow-lg' 
                   : 'bg-[#FFF8F2] text-[#1A1A1A] hover:bg-[#E8611A]/10'
@@ -107,7 +107,7 @@ export function Menu() {
         {/* Menu Content */}
         <ScrollReveal delay={0.25}>
         <div className={`
-          bg-gradient-to-br rounded-2xl p-8 shadow-xl border-2
+          bg-gradient-to-br rounded-2xl p-5 sm:p-8 shadow-xl border-2
           ${isSaturday 
             ? 'from-[#E8611A] to-[#C54D10] text-white border-[#C54D10]' 
             : 'from-white to-[#FFF8F2] text-[#1A1A1A] border-[#E8611A]/20'
@@ -116,12 +116,12 @@ export function Menu() {
           {isSaturday && (
             <div className="flex items-center justify-center gap-2 mb-6">
               <Star className="w-6 h-6" fill="currentColor" />
-              <h3 className="text-3xl font-serif">Dia de Feijoada!</h3>
+              <h3 className="text-2xl sm:text-3xl font-serif">Dia de Feijoada!</h3>
               <Star className="w-6 h-6" fill="currentColor" />
             </div>
           )}
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-6 md:gap-8">
             {/* Proteins */}
             <div>
               <div className="flex items-center gap-2 mb-4">

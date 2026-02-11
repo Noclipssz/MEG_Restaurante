@@ -31,7 +31,7 @@ export function Contact() {
           {/* Contact Info */}
           <ScrollReveal direction="left">
           <div className="space-y-6">
-            <div className="bg-[#FFF8F2] rounded-2xl p-8 border-2 border-[#E8611A]/20">
+            <div className="bg-[#FFF8F2] rounded-2xl p-6 sm:p-8 border-2 border-[#E8611A]/20">
               <h3 className="text-2xl font-serif text-[#1A1A1A] mb-6">Informações</h3>
               
               <div className="space-y-6">
@@ -91,7 +91,7 @@ export function Contact() {
 
           {/* Map */}
           <ScrollReveal direction="right" delay={0.2}>
-          <div className="rounded-2xl overflow-hidden shadow-xl border-2 border-[#E8611A]/20 h-[500px]">
+          <div className="rounded-2xl overflow-hidden shadow-xl border-2 border-[#E8611A]/20 h-[300px] sm:h-[400px] md:h-[500px]">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3603.8524!2d-49.1985!3d-25.4647!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94dce55555555555%3A0x0!2sRua%20Arnaldo%20Th%C3%A1%2C%20198%20-%20Fazendinha%2C%20Curitiba%20-%20PR!5e0!3m2!1spt-BR!2sbr!4v1234567890"
               width="100%"

@@ -93,12 +93,12 @@ export function Pricing() {
         </ScrollReveal>
 
         <ScrollReveal delay={0.15}>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 mb-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 sm:gap-6 mb-8">
           {prices.map((priceCard, index) => (
             <div
               key={index}
               className={`
-                relative rounded-2xl p-6 transition-all duration-300 hover:scale-105
+                relative rounded-2xl p-6 transition-transform duration-300 hover:scale-105
                 ${priceCard.special 
                   ? 'bg-gradient-to-br from-[#E8611A] to-[#C54D10] text-white shadow-xl ring-2 ring-[#E8611A] ring-offset-4' 
                   : priceCard.popular
@@ -168,7 +168,7 @@ export function Pricing() {
 
         {/* Call to Action */}
         <ScrollReveal delay={0.3}>
-        <div className="text-center bg-white rounded-2xl p-8 shadow-lg">
+        <div className="text-center bg-white rounded-2xl p-6 sm:p-8 shadow-lg">
           <p className="text-2xl font-serif text-[#1A1A1A] mb-2">
             Entrega grátis até 2km
           </p>

@@ -31,7 +31,7 @@
     opacity: 0.6;
   }
   100% {
-    transform: scale(2.2);
+    transform: scale(1.8);
     opacity: 0;
   }
 }
@@ -51,7 +51,7 @@
   animation-delay: 1s;
 }
 
-/* Grain texture overlay */
+/* Grain texture overlay — hidden on mobile for GPU performance */
 .grain-overlay::before {
   content: '';
   position: fixed;
@@ -65,4 +65,21 @@
   pointer-events: none;
   z-index: 1000;
   opacity: 0.4;
+}
+
+@media (max-width: 768px) {
+  .grain-overlay::before {
+    display: none;
+  }
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .whatsapp-pulse::before,
+  .whatsapp-pulse::after {
+    animation: none;
+  }
+  .animate-fade-up {
+    animation: none;
+  }
 }

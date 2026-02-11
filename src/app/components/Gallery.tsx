@@ -68,18 +68,19 @@ export function Gallery() {
         </ScrollReveal>
 
         <ScrollReveal delay={0.15}>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-2 sm:gap-4">
           {visibleNames.map((name, index) => (
             <button
               key={name}
               onClick={() => setSelectedImage(index)}
-              className="group relative aspect-square rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105"
+              className="group relative aspect-square rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-[transform,box-shadow] duration-300 hover:scale-105"
             >
               <img
                 src={thumb(name)}
                 alt={`MEG Restaurante - Foto ${index + 1}`}
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                 loading="lazy"
+                decoding="async"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A]/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </button>
@@ -103,12 +104,12 @@ export function Gallery() {
         {/* Lightbox Modal */}
         {selectedImage !== null && (
           <div
-            className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4"
+            className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-2 md:p-4"
             onClick={() => setSelectedImage(null)}
           >
             {/* Close */}
             <button
-              className="absolute top-4 right-4 text-white/70 hover:text-white transition-colors z-10"
+              className="absolute top-3 right-3 text-white/70 hover:text-white transition-colors z-10 p-2"
               onClick={() => setSelectedImage(null)}
             >
               <X className="w-8 h-8" />
@@ -121,10 +122,10 @@ export function Gallery() {
 
             {/* Previous */}
             <button
-              className="absolute left-2 md:left-6 text-white/50 hover:text-white transition-colors z-10 p-2"
+              className="absolute left-1 md:left-6 top-1/2 -translate-y-1/2 text-white/50 hover:text-white transition-colors z-10 p-2"
               onClick={(e) => { e.stopPropagation(); navigateLightbox('prev'); }}
             >
-              <ChevronLeft className="w-10 h-10" />
+              <ChevronLeft className="w-8 h-8 md:w-10 md:h-10" />
             </button>
 
             {/* Image — full-size WebP for lightbox */}
@@ -137,10 +138,10 @@ export function Gallery() {
 
             {/* Next */}
             <button
-              className="absolute right-2 md:right-6 text-white/50 hover:text-white transition-colors z-10 p-2"
+              className="absolute right-1 md:right-6 top-1/2 -translate-y-1/2 text-white/50 hover:text-white transition-colors z-10 p-2"
               onClick={(e) => { e.stopPropagation(); navigateLightbox('next'); }}
             >
-              <ChevronRight className="w-10 h-10" />
+              <ChevronRight className="w-8 h-8 md:w-10 md:h-10" />
             </button>
           </div>
         )}

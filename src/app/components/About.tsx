@@ -12,7 +12,7 @@ export function About() {
             <h2 className="text-4xl md:text-5xl font-serif text-[#1A1A1A] mb-6">
               Nossa História
             </h2>
-            <div className="space-y-4 text-[#1A1A1A]/80 text-lg leading-relaxed">
+            <div className="space-y-4 text-[#1A1A1A]/80 text-base sm:text-lg leading-relaxed">
               <p>
                 O MEG Restaurante nasceu de um ato de fé, não de conforto. A ideia não surgiu de um
                 plano perfeito, mas de uma situação inesperada, um investimento arriscado e uma
@@ -52,7 +52,7 @@ export function About() {
               <img
                 src="/images/casal-proprietarios.jpg"
                 alt="Proprietários do MEG Restaurante"
-                className="w-full h-[500px] object-cover"
+                className="w-full h-[300px] sm:h-[400px] md:h-[500px] object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A]/40 to-transparent" />
             </div>
