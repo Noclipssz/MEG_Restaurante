@@ -1,5 +1,6 @@
 import { Section, Container } from './Section';
-import { MapPin, Clock, Phone, Navigation } from 'lucide-react';
+import { MapPin, Clock, Navigation } from 'lucide-react';
+import { WhatsAppIcon } from './WhatsAppIcon';
 import { Button } from './Button';
 import { ScrollReveal } from './ScrollReveal';
 
@@ -62,7 +63,7 @@ export function Contact() {
 
                 <div className="flex gap-4">
                   <div className="w-12 h-12 bg-[#E8611A] rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Phone className="w-6 h-6 text-white" />
+                    <WhatsAppIcon className="w-6 h-6 text-white" />
                   </div>
                   <div>
                     <p className="font-medium text-[#1A1A1A] mb-1">WhatsApp</p>
@@ -76,7 +77,7 @@ export function Contact() {
 
               <div className="flex flex-col sm:flex-row gap-3 mt-8">
                 <Button onClick={handleWhatsAppClick} className="flex-1">
-                  <Phone className="w-5 h-5" />
+                  <WhatsAppIcon className="w-5 h-5" />
                   WhatsApp
                 </Button>
                 <Button variant="outline" onClick={handleDirections} className="flex-1">

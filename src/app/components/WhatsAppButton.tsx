@@ -1,5 +1,5 @@
-import { Phone } from 'lucide-react';
 import { useState, useEffect } from 'react';
+import { WhatsAppIcon } from './WhatsAppIcon';
 
 export function WhatsAppButton() {
   const [isVisible, setIsVisible] = useState(false);
@@ -29,7 +29,7 @@ export function WhatsAppButton() {
       }`}
       aria-label="Falar no WhatsApp"
     >
-      <Phone className="w-6 h-6" fill="currentColor" />
+      <WhatsAppIcon className="w-6 h-6" />
     </button>
   );
 }

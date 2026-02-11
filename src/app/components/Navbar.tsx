@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, Phone } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
+import { WhatsAppIcon } from './WhatsAppIcon';
 import { motion, AnimatePresence } from 'motion/react';
 import { useIsMobile } from './ui/use-mobile';
 
@@ -75,7 +76,7 @@ export function Navbar() {
               onClick={() => window.open('https://wa.me/5541987750097', '_blank')}
               className="inline-flex items-center gap-2 bg-[#E8611A] hover:bg-[#C54D10] text-white text-sm font-medium px-4 py-2 rounded-lg transition-all duration-200 active:scale-95"
             >
-              <Phone className="w-4 h-4" />
+              <WhatsAppIcon className="w-4 h-4" />
               Pedir Agora
             </button>
           </div>
@@ -116,7 +117,7 @@ export function Navbar() {
                   onClick={() => window.open('https://wa.me/5541987750097', '_blank')}
                   className="w-full inline-flex items-center justify-center gap-2 bg-[#E8611A] hover:bg-[#C54D10] text-white font-medium px-4 py-3 rounded-lg transition-all duration-200 active:scale-95"
                 >
-                  <Phone className="w-4 h-4" />
+                  <WhatsAppIcon className="w-4 h-4" />
                   Pedir pelo WhatsApp
                 </button>
               </div>

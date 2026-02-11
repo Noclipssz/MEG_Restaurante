@@ -1,4 +1,5 @@
-import { Phone, MapPin, Clock } from 'lucide-react';
+import { MapPin, Clock, Truck } from 'lucide-react';
+import { WhatsAppIcon } from './WhatsAppIcon';
 import { Button } from './Button';
 import { motion } from 'motion/react';
 
@@ -54,7 +55,7 @@ export function Hero() {
               onClick={handleWhatsAppClick}
               className="shadow-lg shadow-[#E8611A]/30"
             >
-              <Phone className="w-5 h-5" />
+              <WhatsAppIcon className="w-5 h-5" />
               Pedir pelo WhatsApp
             </Button>
             <Button 
@@ -80,7 +81,7 @@ export function Hero() {
               <p className="text-white font-medium text-sm">Fazendinha, Curitiba</p>
             </div>
             <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
-              <Phone className="w-5 h-5 text-[#E8611A] mb-2" />
+              <Truck className="w-5 h-5 text-[#E8611A] mb-2" />
               <p className="text-white/60 text-xs mb-1">Entrega</p>
               <p className="text-white font-medium text-sm">Grátis até 2km</p>
             </div>

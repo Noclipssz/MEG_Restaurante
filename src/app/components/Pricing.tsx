@@ -1,5 +1,6 @@
 import { Section, Container } from './Section';
 import { Check, Utensils, Package, Star } from 'lucide-react';
+import { WhatsAppIcon } from './WhatsAppIcon';
 import { Button } from './Button';
 import { ScrollReveal } from './ScrollReveal';
 
@@ -175,6 +176,7 @@ export function Pricing() {
             Faça seu pedido pelo WhatsApp
           </p>
           <Button size="lg" onClick={handleWhatsAppClick}>
+            <WhatsAppIcon className="w-5 h-5" />
             Pedir Agora
           </Button>
         </div>
