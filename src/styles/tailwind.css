@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  /* Brand Colors */
+  --color-brand-orange: #E8611A;
+  --color-brand-orange-dark: #C54D10;
+  --color-brand-black: #1A1A1A;
+  --color-brand-cream: #FFF8F2;
+  --color-brand-wood: #8B5E3C;
+
+  /* Theme Colors */
+  --color-background: #FFF8F2;
+  --color-foreground: #1A1A1A;
+  --color-card: #ffffff;
+  --color-card-foreground: #1A1A1A;
+  --color-popover: #ffffff;
+  --color-popover-foreground: #1A1A1A;
+  --color-primary: #E8611A;
+  --color-primary-foreground: #ffffff;
+  --color-secondary: #8B5E3C;
+  --color-secondary-foreground: #ffffff;
+  --color-muted: #f5e6d3;
+  --color-muted-foreground: #6b5d4f;
+  --color-accent: #E8611A;
+  --color-accent-foreground: #ffffff;
+  --color-destructive: #d4183d;
+  --color-destructive-foreground: #ffffff;
+  --color-border: rgba(26, 26, 26, 0.1);
+  --color-input: transparent;
+  --color-input-background: #ffffff;
+  --color-ring: #E8611A;
+
+  /* Radius */
+  --radius-sm: 0.75rem;
+  --radius-md: 0.875rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.25rem;
+}
