@@ -49,20 +49,8 @@ export function Navbar() {
     >
       <div className="container mx-auto px-4 md:px-6 lg:px-8 max-w-7xl">
         <div className="flex items-center justify-between h-20 md:h-24">
-          {/* Logo */}
-          <button
-            onClick={() => handleNavClick('#inicio')}
-            className="relative z-10"
-          >
-            <img
-              src="/images/logo-meg.png"
-              alt="MEG Restaurante"
-              className="h-14 md:h-16 w-auto brightness-0 invert"
-            />
-          </button>
-
           {/* Desktop Links */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-8 ml-auto">
             {navLinks.map((link) => (
               <button
                 key={link.href}

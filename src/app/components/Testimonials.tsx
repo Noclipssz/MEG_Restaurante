@@ -4,21 +4,27 @@ import { ScrollReveal } from './ScrollReveal';
 
 const testimonials = [
   {
-    name: 'Carlos Silva',
-    role: 'Cliente há 2 anos',
-    text: 'Almoço aqui quase todos os dias. A comida é sempre bem feita e o atendimento é excelente. Virou meu restaurante de confiança.',
+    name: 'Alyne Crystiane Catarino',
+    role: 'Avaliação Google',
+    text: 'A comida é uma delícia, bem caseira, vale muito a pena, o único problema é que a gente come demais daí rsrs. Super indico.',
     rating: 5
   },
   {
-    name: 'Mariana Santos',
-    role: 'Cliente regular',
-    text: 'O que mais me impressiona é a constância. Não importa o dia, a comida está sempre boa e o ambiente limpo e organizado.',
+    name: 'Chaiana Ferreira',
+    role: 'Avaliação Google',
+    text: 'Também podemos contar com o excelente atendimento, principalmente da Bruna, que faz questão da gente ser bem tratada e sentir acolhida. Super indico.',
     rating: 5
   },
   {
-    name: 'João Oliveira',
-    role: 'Cliente fiel',
-    text: 'A feijoada de sábado é sensacional! Já indiquei para vários amigos e todos adoraram. Atendimento nota 10.',
+    name: 'Eduardo Bittencourt De Melo',
+    role: 'Avaliação Google',
+    text: 'Comida excelente, atendimento ótimo, super recomendo.',
+    rating: 5
+  },
+  {
+    name: 'Danielle Bill',
+    role: 'Avaliação Google',
+    text: 'Comida maravilhosa, bom tempero, barato, atendimento espetacular. Amei!',
     rating: 5
   }
 ];
@@ -38,7 +44,7 @@ export function Testimonials() {
           </div>
         </ScrollReveal>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
           {testimonials.map((testimonial, index) => (
             <ScrollReveal key={index} delay={index * 0.1}>
             <div
