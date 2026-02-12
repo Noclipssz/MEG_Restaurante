@@ -3,6 +3,7 @@ import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { About } from './components/About';
 import { Menu } from './components/Menu';
+import { OrderFormProvider, OrderFormDrawer } from './components/OrderForm';
 
 // Lazy load components below the fold
 const Pricing = lazy(() => import('./components/Pricing').then(m => ({ default: m.Pricing })));
@@ -14,19 +15,22 @@ const WhatsAppButton = lazy(() => import('./components/WhatsAppButton').then(m =
 
 export default function App() {
   return (
-    <div className="min-h-screen grain-overlay">
-      <Navbar />
-      <Hero />
-      <About />
-      <Menu />
-      <Suspense fallback={null}>
-        <Pricing />
-        <Gallery />
-        <Testimonials />
-        <Contact />
-        <Footer />
-        <WhatsAppButton />
-      </Suspense>
-    </div>
+    <OrderFormProvider>
+      <div className="min-h-screen grain-overlay">
+        <Navbar />
+        <Hero />
+        <About />
+        <Menu />
+        <Suspense fallback={null}>
+          <Pricing />
+          <Gallery />
+          <Testimonials />
+          <Contact />
+          <Footer />
+          <WhatsAppButton />
+        </Suspense>
+      </div>
+      <OrderFormDrawer />
+    </OrderFormProvider>
   );
 }

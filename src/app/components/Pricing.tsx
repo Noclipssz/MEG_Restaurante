@@ -3,6 +3,7 @@ import { Check, Utensils, Package, Star } from 'lucide-react';
 import { WhatsAppIcon } from './WhatsAppIcon';
 import { Button } from './Button';
 import { ScrollReveal } from './ScrollReveal';
+import { useOrderFormDrawer } from './OrderForm';
 
 interface PriceCard {
   title: string;
@@ -74,9 +75,7 @@ const prices: PriceCard[] = [
 ];
 
 export function Pricing() {
-  const handleWhatsAppClick = () => {
-    window.open('https://wa.me/5541987750097', '_blank');
-  };
+  const { openOrderForm } = useOrderFormDrawer();
 
   return (
     <Section id="precos" variant="cream">
@@ -175,7 +174,7 @@ export function Pricing() {
           <p className="text-[#1A1A1A]/70 mb-6">
             Faça seu pedido pelo WhatsApp
           </p>
-          <Button size="lg" onClick={handleWhatsAppClick}>
+          <Button size="lg" onClick={openOrderForm}>
             <WhatsAppIcon className="w-5 h-5" />
             Pedir Agora
           </Button>

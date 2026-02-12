@@ -2,11 +2,10 @@ import { MapPin, Clock, Truck } from 'lucide-react';
 import { WhatsAppIcon } from './WhatsAppIcon';
 import { Button } from './Button';
 import { motion } from 'motion/react';
+import { useOrderFormDrawer } from './OrderForm';
 
 export function Hero() {
-  const handleWhatsAppClick = () => {
-    window.open('https://wa.me/5541987750097', '_blank');
-  };
+  const { openOrderForm } = useOrderFormDrawer();
 
   return (
     <div id="inicio" className="relative min-h-[90vh] flex items-center bg-[#1A1A1A]">
@@ -50,9 +49,9 @@ export function Hero() {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 mb-12">
-            <Button 
-              size="lg" 
-              onClick={handleWhatsAppClick}
+            <Button
+              size="lg"
+              onClick={openOrderForm}
               className="shadow-lg shadow-[#E8611A]/30"
             >
               <WhatsAppIcon className="w-5 h-5" />
