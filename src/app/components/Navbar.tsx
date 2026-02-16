@@ -41,14 +41,14 @@ export function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 pt-[max(env(safe-area-inset-top),0px)] transition-all duration-300 ${
         scrolled || mobileOpen
           ? 'bg-[#1A1A1A]/95 backdrop-blur-md shadow-lg'
           : 'bg-transparent'
       }`}
     >
       <div className="container mx-auto px-4 md:px-6 lg:px-8 max-w-7xl">
-        <div className="flex items-center justify-between h-20 md:h-24">
+        <div className="flex items-center justify-between h-16 md:h-24">
           {/* Desktop Links */}
           <div className="hidden md:flex items-center gap-8 ml-auto">
             {navLinks.map((link) => (
@@ -71,7 +71,11 @@ export function Navbar() {
 
           {/* Mobile Hamburger */}
           <button
-            className="md:hidden relative z-10 text-white p-3 -mr-1 ml-auto"
+            className={`md:hidden relative z-10 ml-auto rounded-lg p-2.5 transition-colors ${
+              scrolled || mobileOpen
+                ? 'text-white hover:bg-white/10'
+                : 'text-white bg-[#1A1A1A]/35 border border-white/20 backdrop-blur-sm'
+            }`}
             onClick={() => setMobileOpen((prev) => !prev)}
             aria-label={mobileOpen ? 'Fechar menu' : 'Abrir menu'}
           >

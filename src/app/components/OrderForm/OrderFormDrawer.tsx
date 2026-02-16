@@ -102,7 +102,7 @@ export function OrderFormDrawer() {
           </DrawerHeader>
 
           {/* Step Content */}
-          <div className="flex-1 overflow-y-auto px-4 py-4">
+          <div className="flex-1 overflow-y-auto px-3 sm:px-4 py-4">
             <AnimatePresence mode="wait">
               <motion.div
                 key={step}
@@ -127,13 +127,13 @@ export function OrderFormDrawer() {
 
           {/* Footer Navigation (hidden on confirm step - it has its own send button) */}
           {step < 4 && (
-            <DrawerFooter className="border-t border-[#1A1A1A]/10 pt-4">
-              <div className="flex gap-3">
+            <DrawerFooter className="border-t border-[#1A1A1A]/10 pt-4 pb-[max(1rem,env(safe-area-inset-bottom))]">
+              <div className="flex flex-col sm:flex-row gap-3">
                 {step > 1 && (
                   <button
                     type="button"
                     onClick={prevStep}
-                    className="flex items-center gap-1.5 px-4 py-3 rounded-xl border-2 border-[#1A1A1A]/10 text-[#1A1A1A]/70 hover:border-[#1A1A1A]/30 transition-colors font-medium"
+                    className="flex items-center justify-center gap-1.5 px-4 py-3 rounded-xl border-2 border-[#1A1A1A]/10 text-[#1A1A1A]/70 hover:border-[#1A1A1A]/30 transition-colors font-medium sm:w-auto"
                   >
                     <ArrowLeft className="w-4 h-4" />
                     Voltar

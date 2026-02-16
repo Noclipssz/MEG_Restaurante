@@ -2,6 +2,17 @@ export type MarmitaSize = 'P' | 'M' | 'G' | 'feijoada';
 
 export type DeliveryMethod = 'entrega' | 'retirada';
 
+export type BeanType = 'preto' | 'branco';
+
+export type PaymentMethod = 'pix' | 'dinheiro' | 'debito' | 'credito';
+
+export interface DrinkOption {
+  id: string;
+  label: string;
+  price: number;
+  priceDisplay: string;
+}
+
 export interface SizeOption {
   id: MarmitaSize;
   label: string;
@@ -12,10 +23,23 @@ export interface SizeOption {
   special?: boolean;
 }
 
-export interface OrderFormData {
+export interface MarmitaItem {
   size: MarmitaSize;
-  proteins: string[];
+  quantity: number;
+  flavors: string[];
+  beanTypes: Array<BeanType | ''>;
+}
+
+export interface DrinkSelection {
+  drinkId: string;
+  quantity: number;
+}
+
+export interface OrderFormData {
+  marmitaItems: MarmitaItem[];
+  drinks: DrinkSelection[];
   deliveryMethod: DeliveryMethod;
+  paymentMethod: PaymentMethod | '';
   address: string;
   customerName: string;
   observations: string;

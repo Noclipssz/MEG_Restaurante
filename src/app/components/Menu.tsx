@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Section, Container } from './Section';
-import { UtensilsCrossed, Star } from 'lucide-react';
+import { UtensilsCrossed, Star, GlassWater } from 'lucide-react';
 import { ScrollReveal } from './ScrollReveal';
-import { weekMenu } from '../data/menu';
+import { beverages, weekMenu } from '../data/menu';
 
 export function Menu() {
   const [activeDay, setActiveDay] = useState(0);
@@ -140,6 +140,24 @@ export function Menu() {
         `}>
           * Marmitex de segunda a sexta acompanha 2 opções de mistura
         </p>
+
+        <ScrollReveal delay={0.3}>
+          <div className="mt-10 rounded-2xl border-2 border-[#E8611A]/20 bg-white p-5 sm:p-8 shadow-lg">
+            <div className="flex items-center gap-2 mb-4">
+              <GlassWater className="w-6 h-6 text-[#E8611A]" />
+              <h4 className="text-2xl font-serif text-[#1A1A1A]">Bebidas</h4>
+            </div>
+
+            <div className="grid sm:grid-cols-2 gap-x-6 gap-y-2">
+              {beverages.map((drink) => (
+                <div key={drink.id} className="flex items-center justify-between gap-3 py-1.5 border-b border-[#1A1A1A]/5 last:border-b-0">
+                  <span className="text-[#1A1A1A]/80 text-sm sm:text-base">{drink.label}</span>
+                  <span className="font-semibold text-[#1A1A1A] text-sm sm:text-base">{drink.priceDisplay}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </ScrollReveal>
       </Container>
     </Section>
   );

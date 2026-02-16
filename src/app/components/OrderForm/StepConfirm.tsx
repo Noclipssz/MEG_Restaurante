@@ -3,7 +3,12 @@ import { useFormContext } from 'react-hook-form';
 import { WhatsAppIcon } from '../WhatsAppIcon';
 import type { DayMenu } from '../../data/menu';
 import type { OrderFormData } from './types';
-import { getSizeOption, openWhatsAppWithOrder } from './utils';
+import {
+  calculateOrderTotal,
+  getDrinkLabel,
+  getSizeOption,
+  openWhatsAppWithOrder,
+} from './utils';
 
 interface StepConfirmProps {
   todayMenu: DayMenu;
@@ -16,7 +21,7 @@ function SummaryRow({ label, value, onEdit }: { label: string; value: string; on
     <div className="flex items-start gap-3">
       <div className="flex-1 min-w-0">
         <p className="text-xs font-medium text-[#1A1A1A]/50 uppercase tracking-wide">{label}</p>
-        <p className="text-[#1A1A1A] font-medium truncate">{value}</p>
+        <p className="text-[#1A1A1A] font-medium whitespace-pre-wrap break-words">{value}</p>
       </div>
       <button
         type="button"
@@ -33,7 +38,28 @@ function SummaryRow({ label, value, onEdit }: { label: string; value: string; on
 export function StepConfirm({ todayMenu, onClose, setStep }: StepConfirmProps) {
   const { watch, register } = useFormContext<OrderFormData>();
   const data = watch();
-  const sizeOpt = getSizeOption(data.size);
+  const total = calculateOrderTotal(data);
+
+  const marmitaSummary = data.marmitaItems
+    .map((item) => `${item.quantity}x ${getSizeOption(item.size).label}`)
+    .join(' / ');
+
+  const flavorSummary = data.marmitaItems
+    .filter((item) => item.size !== 'feijoada')
+    .map((item) => {
+      const sizeLabel = getSizeOption(item.size).label;
+      const units = item.flavors.map((flavor, index) => {
+        const beanType = item.beanTypes[index];
+        const beanLabel = beanType === 'preto'
+          ? 'Feijão preto'
+          : beanType === 'branco'
+            ? 'Feijão branco'
+            : 'Feijão não selecionado';
+        return `${index + 1}) ${flavor} (${beanLabel})`;
+      }).join(', ');
+      return `${sizeLabel}: ${units}`;
+    })
+    .join(' | ');
 
   const handleSend = () => {
     openWhatsAppWithOrder(data, todayMenu.day);
@@ -49,15 +75,37 @@ export function StepConfirm({ todayMenu, onClose, setStep }: StepConfirmProps) {
       {/* Order Summary */}
       <div className="rounded-xl border-2 border-[#E8611A]/20 bg-[#FFF8F2] p-4 space-y-3">
         <SummaryRow
-          label="Tamanho"
-          value={`${sizeOpt.label} - ${sizeOpt.priceDisplay}`}
+          label="Marmitas"
+          value={marmitaSummary}
           onEdit={() => setStep(1)}
         />
-        {data.size !== 'feijoada' && (
+        {flavorSummary && (
+          <>
+            <SummaryRow
+              label="Sabores"
+              value={flavorSummary}
+              onEdit={() => setStep(2)}
+            />
+          </>
+        )}
+        <SummaryRow
+          label="Pagamento"
+          value={
+            data.paymentMethod === 'pix'
+              ? 'Pix'
+              : data.paymentMethod === 'dinheiro'
+                ? 'Dinheiro'
+                : data.paymentMethod === 'debito'
+                  ? 'Cartão de débito'
+                  : 'Cartão de crédito'
+          }
+          onEdit={() => setStep(3)}
+        />
+        {data.drinks.length > 0 && (
           <SummaryRow
-            label="Mistura"
-            value={data.proteins[0] || ''}
-            onEdit={() => setStep(2)}
+            label="Bebidas"
+            value={data.drinks.map((drink) => `${drink.quantity}x ${getDrinkLabel(drink.drinkId)}`).join(' / ')}
+            onEdit={() => setStep(3)}
           />
         )}
         <SummaryRow
@@ -65,6 +113,12 @@ export function StepConfirm({ todayMenu, onClose, setStep }: StepConfirmProps) {
           value={data.deliveryMethod === 'entrega' ? data.address : 'Retirada no local'}
           onEdit={() => setStep(3)}
         />
+        <div className="pt-2 border-t border-[#E8611A]/20 flex items-center justify-between">
+          <p className="text-sm text-[#1A1A1A]/70">Total do pedido</p>
+          <p className="text-xl font-bold text-[#1A1A1A]">
+            {new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(total)}
+          </p>
+        </div>
       </div>
 
       {/* Optional Fields */}

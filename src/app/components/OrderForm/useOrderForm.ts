@@ -2,6 +2,7 @@ import { useState, useMemo } from 'react';
 import { useForm } from 'react-hook-form';
 import { getTodayMenu, isSaturday, isSunday } from '../../data/menu';
 import type { OrderFormData } from './types';
+import { hasFlavorStep } from './utils';
 
 export function useOrderForm() {
   const [step, setStep] = useState(1);
@@ -12,9 +13,10 @@ export function useOrderForm() {
 
   const form = useForm<OrderFormData>({
     defaultValues: {
-      size: 'M',
-      proteins: [],
+      marmitaItems: [],
+      drinks: [],
       deliveryMethod: 'entrega',
+      paymentMethod: '',
       address: '',
       customerName: '',
       observations: '',
@@ -23,33 +25,31 @@ export function useOrderForm() {
 
   // Watch all values reactively for canAdvance
   const watchedValues = form.watch();
-  const currentSize = watchedValues.size;
+  const shouldShowFlavorStep = hasFlavorStep(watchedValues);
 
-  // Se escolheu feijoada, pula passo 2 (proteínas)
-  // Passos efetivos: 1(tamanho) → 3(entrega) → 4(confirmar) = 3 passos visuais
-  const totalSteps = currentSize === 'feijoada' ? 3 : 4;
+  const totalSteps = shouldShowFlavorStep ? 4 : 3;
 
   // Converte step interno para step visual (para exibição)
   const displayStep = useMemo(() => {
-    if (currentSize === 'feijoada') {
+    if (!shouldShowFlavorStep) {
       if (step === 1) return 1;
       if (step === 3) return 2;
       if (step === 4) return 3;
     }
     return step;
-  }, [step, currentSize]);
+  }, [step, shouldShowFlavorStep]);
 
   const nextStep = () => {
-    if (step === 1 && currentSize === 'feijoada') {
-      setStep(3); // pula proteínas
+    if (step === 1 && !shouldShowFlavorStep) {
+      setStep(3);
     } else {
       setStep(s => Math.min(s + 1, 4));
     }
   };
 
   const prevStep = () => {
-    if (step === 3 && currentSize === 'feijoada') {
-      setStep(1); // volta direto pro tamanho
+    if (step === 3 && !shouldShowFlavorStep) {
+      setStep(1);
     } else {
       setStep(s => Math.max(s - 1, 1));
     }
@@ -57,9 +57,27 @@ export function useOrderForm() {
 
   const canAdvance = (): boolean => {
     switch (step) {
-      case 1: return !!watchedValues.size;
-      case 2: return watchedValues.proteins.length > 0;
+      case 1:
+        return watchedValues.marmitaItems.some((item) => item.quantity > 0);
+      case 2: {
+        const itemsWithFlavor = watchedValues.marmitaItems.filter(
+          (item) => item.size !== 'feijoada' && item.quantity > 0,
+        );
+
+        if (itemsWithFlavor.length === 0) {
+          return true;
+        }
+
+        return itemsWithFlavor.every((item) => {
+          const validFlavors = item.flavors.length === item.quantity && item.flavors.every((value) => value.trim().length > 0);
+          const validBeans = item.beanTypes.length === item.quantity && item.beanTypes.every((value) => value !== '');
+          return validFlavors && validBeans;
+        });
+      }
       case 3: {
+        if (!watchedValues.paymentMethod) {
+          return false;
+        }
         if (watchedValues.deliveryMethod === 'entrega') {
           return watchedValues.address.trim().length >= 5;
         }

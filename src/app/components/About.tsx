@@ -52,7 +52,7 @@ export function About() {
               <img
                 src="/images/casal-proprietarios.jpg"
                 alt="Proprietários do MEG Restaurante"
-                className="w-full h-[300px] sm:h-[400px] md:h-[500px] object-cover"
+                className="w-full h-auto md:h-[500px] object-contain md:object-cover bg-[#FFF8F2]"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A]/40 to-transparent" />
             </div>

@@ -6,6 +6,28 @@ export interface DayMenu {
   special?: string;
 }
 
+export interface BeverageItem {
+  id: string;
+  label: string;
+  price: number;
+  priceDisplay: string;
+}
+
+export const beverages: BeverageItem[] = [
+  { id: 'coca-lata', label: 'Coca-Cola lata', price: 7, priceDisplay: 'R$ 7,00' },
+  { id: 'coca-zero-lata', label: 'Coca-Cola zero lata', price: 7, priceDisplay: 'R$ 7,00' },
+  { id: 'sprite-lata', label: 'Sprite lata', price: 7, priceDisplay: 'R$ 7,00' },
+  { id: 'kuat-lata', label: 'Kuat lata', price: 7, priceDisplay: 'R$ 7,00' },
+  { id: 'fanta-laranja-lata', label: 'Fanta laranja lata', price: 7, priceDisplay: 'R$ 7,00' },
+  { id: 'fanta-uva-lata', label: 'Fanta uva lata', price: 7, priceDisplay: 'R$ 7,00' },
+  { id: 'coca-200', label: 'Coca-Cola 200ml (normal ou zero)', price: 4, priceDisplay: 'R$ 4,00' },
+  { id: 'coca-600', label: 'Coca-Cola 600ml (normal ou zero)', price: 9, priceDisplay: 'R$ 9,00' },
+  { id: 'coca-1l', label: 'Coca-Cola PET 1L (normal ou zero)', price: 11, priceDisplay: 'R$ 11,00' },
+  { id: 'coca-2l', label: 'Coca-Cola 2L', price: 16, priceDisplay: 'R$ 16,00' },
+  { id: 'delvalle-uva', label: 'Suco Del Valle lata uva', price: 7, priceDisplay: 'R$ 7,00' },
+  { id: 'delvalle-maracuja', label: 'Suco Del Valle lata maracujá', price: 7, priceDisplay: 'R$ 7,00' },
+];
+
 export const weekMenu: DayMenu[] = [
   {
     day: 'Segunda',
